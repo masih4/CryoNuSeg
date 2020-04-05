@@ -1,4 +1,4 @@
-function  masks_generator(size,imagej_zips_path,raw_imgs_path, results_path )
+function  masks_generator(size_target,imagej_zips_path,raw_imgs_path, results_path )
 % author: Amirreza Mahbod 
 % contact: amirreza.mahbod@gmail.com
 
@@ -28,9 +28,9 @@ function  masks_generator(size,imagej_zips_path,raw_imgs_path, results_path )
          
 
 
-mask_overlap = zeros(size,size);
-mask_overlap_borderremove = zeros(size,size);
-D_overlap = zeros(size, size);
+mask_overlap = zeros(size_target,size_target);
+mask_overlap_borderremove = zeros(size_target,size_target);
+D_overlap = zeros(size_target, size_target);
 
 imagej_zips = dir(strcat(imagej_zips_path,'*.zip'));
 raw_imgs = dir(strcat(raw_imgs_path,'*.png'));
@@ -129,6 +129,10 @@ for counter = 1:length(imagej_zips)
     
     %% for overliad images
     original= imread(strcat(raw_imgs(counter).folder,'\',raw_imgs(counter).name));
+    img_dim = size(original);
+    if length(img_dim) ==2
+        original = cat(3, original, original, original);
+    end
     original_r = original(:,:,1);
     original_g = original(:,:,2);
     original_b = original(:,:,3);
@@ -142,7 +146,7 @@ for counter = 1:length(imagej_zips)
     original2(:,:,3) = original_b;
     fig = figure('Renderer', 'painters', 'Position', [10 10 1500 750]);
     subplot(1,2,2);imshow(original2); title({'overlay'},'FontSize', 22);
-    for i=1:length(mask_overlap)
+    for i=1:length(ROIs)
         dum = mask_overlap;
         dum(mask_overlap~=i)=0;
         hold on
@@ -154,9 +158,9 @@ for counter = 1:length(imagej_zips)
 
     saveas(fig, save_path_overlay);
     
-    mask_overlap = zeros(size,size);
-    mask_overlap_borderremove = zeros(size,size);
-    D_overlap = zeros(512,512);
+    mask_overlap = zeros(size_target,size_target);
+    mask_overlap_borderremove = zeros(size_target,size_target);
+    D_overlap = zeros(size_target,size_target);
     counter
     close all
 end
