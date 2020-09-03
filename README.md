@@ -44,15 +44,17 @@ https://www.kaggle.com/ipateam/segmentation-of-nuclei-in-cryosectioned-he-images
 
 ## WSI Selection
 To extract the patches from the TCGA database, we did the following steps:
-- Go to: https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga
-- Click on "Access TCGA Data"
-- Click on "Repository"
-- From the left panel in the "Data Type" section select "svs" type. There are more than 30000 WSIs in the database. 
-- Again from the left panel in the "Access" section, select "open" files. At the time of writing this guideline (2020-09-03), all .svs files have the open-access format. 
-- Again from the left panel in the "Experimental Strategy" section select "Tissue slide". (Tissue slide represent FS samples and diagnostic slide represent FFPE samples)
-- All the above three selections were chosen from the left panel while the "Files" tap was open. Now switch to the "Cases" tap. 
-- From the "Primary site," you are able to select the organs. In this study, we chose 10 organs that were not widely used in the other publicly available datasets. We chose the adrenal gland, larynx, lymph nodes, mediastinum, pancreas, pleura, skin, testes, thymus, and thyroid gland. 
-- For each organ, we selected 3 WSIs at 40x magnification. A senior biologist at the Medical University of Vienna helped us with the WSI selection. The full description of the selected WSIs with meta data such as gender, sex, etc can be found in "Selected_WSIs.xlsx" in the repository files. 
+- 1- Go to: https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga
+- 2- Click on "Access TCGA Data"
+- 3- Click on "Repository"
+- 4- From the left panel in the "Data Type" section select "svs" type. There are more than 30000 WSIs in the database. 
+- 5- Again from the left panel in the "Access" section, select "open" files. At the time of writing this guideline (2020-09-03), all .svs files have the open-access format. 
+- 6- Again from the left panel in the "Experimental Strategy" section select "Tissue slide". (Tissue slide represent FS samples and diagnostic slide represent FFPE samples)
+- 7- All the above three selections were chosen from the left panel while the "Files" tap was open. Now switch to the "Cases" tap. 
+- 8- From the "Primary site," you are able to select the organs. In this study, we chose 10 organs that were not widely used in the other publicly available datasets. We chose the adrenal gland, larynx, lymph nodes, mediastinum, pancreas, pleura, skin, testes, thymus, and thyroid gland. 
+- 9- For each organ, we selected 3 WSIs at 40x magnification. A senior biologist at the Medical University of Vienna helped us with the WSI selection. We selected the WSIs from different patient and different tissue center based on the provided barcodes (further information about the barcodes: https://docs.gdc.cancer.gov/Encyclopedia/pages/TCGA_Barcode/). The full description of the selected WSIs with meta data such as gender, sex, etc can be found in "Selected_WSIs.xlsx" in the repository files. 
+- Alternatively, the advanced search option could be used to replace step 4 to 8 (i.e. by seraching for: 
+```files.access in ["open"] and files.data_format in ["svs"] and files.experimental_strategy in ["Diagnostic Slide","Tissue Slide"] AND cases.samples.is_ffpe = false```)
 
 ## WSI patch extraction
 
