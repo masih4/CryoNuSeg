@@ -57,7 +57,31 @@ To extract the patches from the TCGA database, we did the following steps:
 ```files.access in ["open"] and files.data_format in ["svs"] and files.experimental_strategy in ["Diagnostic Slide","Tissue Slide"] AND cases.samples.is_ffpe = false```)
 
 ## WSI patch extraction
+To extract image patches with a fixed size of 512x512 pixels we used QuPath software (https://qupath.github.io/). We performed the following steps:
+- Open the downloaded .svs file with QuPath.
+- Go to Automate --> show script editor 
+- Copy and paste the following code and run it:
+```// Script to create a 512 x 512 rectangle ROI in Qupath
+import qupath.lib.roi.RectangleROI
+import qupath.lib.objects.PathAnnotationObject
+// Adapted from:
+// https://github.com/qupath/qupath/issues/137
+// Size in pixels at the base resolution
+int size = 511
 
+// Get center pixel
+def viewer = getCurrentViewer()
+int cx = viewer.getCenterPixelX()
+int cy = viewer.getCenterPixelY()
+
+// Create & add annotation
+def roi = new RectangleROI(cx-size/2, cy-size/2, size, size)
+def annotation = new PathAnnotationObject(roi)
+addObject(annotation)
+```
+- A square box with the preferred size (512x512 pixel in this project) will appear on the screen. Move the box to a proper position where you would like to extract the patch.
+- then use Extension --> ImageJ --> send region to ImageJ (downsample factor = 1)
+- The image will appear on ImageJ software and then you could perform manual segmentation (see next session)
 ## Manual annotation with ImageJ
 
 ## Acknowledgements
