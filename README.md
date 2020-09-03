@@ -18,6 +18,8 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 [Manual annotation with ImageJ](#manual-annotation-with-imagej)
 
+[Codes to generate segmentation masks](#codes-to-generate-segmentation-masks)
+
 [Acknowledgements](#acknowledgements)
 
 
@@ -92,6 +94,9 @@ We used ImageJ software to perform manual nuclei instance segmentation. We follo
 - to remove an ROI 
 - When you are done with all nuclei, save the outputs with ROI manager--> More --> Save
 - A zip file containing a number of ROI files will be created after saving the outputs (each ROI file represent one of the nucleus) 
+
+## Codes to generate segmentation masks
+The Matlab codes to generate the segmentation masks are available in the codes folder. Besides the conventional binary masks, we also created some auxiliary segmentation masks that may be helpful in developing supervised machine learning-based algorithms.  
 
 ## Acknowledgements
 This work was supported by the Austrian Research Promotion Agency (FFG), No. 872636 and the Kaggle open data research grant.
