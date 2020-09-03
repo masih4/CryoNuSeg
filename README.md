@@ -52,7 +52,7 @@ To extract the patches from the TCGA database, we did the following steps:
 - Again from the left panel in the "Experimental Strategy" section select "Tissue slide". (Tissue slide represent FS samples and diagnostic slide represent FFPE samples)
 - All the above three selections were chosen from the left panel while the "Files" tap was open. Now switch to the "Cases" tap. 
 - From the "Primary site," you are able to select the organs. In this study, we chose 10 organs that were not widely used in the other publicly available datasets. We chose the adrenal gland, larynx, lymph nodes, mediastinum, pancreas, pleura, skin, testes, thymus, and thyroid gland. 
-- For each organ, we selected 3 WSIs at 40x magnification. A senior biologist at the Medical University of Vienna helped us with the WSI selection. The full description of the selected WSIs can be found in the repository files called "WSI_selection.xls". 
+- For each organ, we selected 3 WSIs at 40x magnification. A senior biologist at the Medical University of Vienna helped us with the WSI selection. The full description of the selected WSIs with meta data such as gender, sex, etc can be found in the repository files called "Selected_WSIs.xlsx". 
 
 ## WSI patch extraction
 
