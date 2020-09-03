@@ -29,11 +29,13 @@ function  masks_generator(size_target,imagej_zips_path,raw_imgs_path, results_pa
 
 
 mask_overlap = zeros(size_target,size_target);
+mask_overlap_modify = zeros(size_target,size_target);
+
 mask_overlap_borderremove = zeros(size_target,size_target);
 D_overlap = zeros(size_target, size_target);
 
 imagej_zips = dir(strcat(imagej_zips_path,'*.zip'));
-raw_imgs = dir(strcat(raw_imgs_path,'*.png'));
+raw_imgs = dir(strcat(raw_imgs_path,'*.tif'));
 
 %% creating required dirs
 mkdir(strcat(results_path,'label masks'));
@@ -44,12 +46,15 @@ mkdir(strcat(results_path,'distance maps'));
 mkdir(strcat(results_path,'weighted_maps'));
 mkdir(strcat(results_path,'weighted_maps_erode'));
 mkdir(strcat(results_path,'overlay_save_path'));
+mkdir(strcat(results_path,'label masks modify'));
+
 
 % main loop
 for counter = 1:length(imagej_zips)
     s = strcat(imagej_zips(counter).folder,'\',imagej_zips(counter).name);
     unzip(s, 'tempfolder');
-    ROIs = dir('.\tempfolder\*.roi');  
+    ROIs = dir('.\tempfolder\*.roi');
+    object_count(counter) = length(ROIs);
     for n_num=1:length(ROIs)
            MaskName = strcat('.\tempfolder\',ROIs(n_num).name); 
            [sROI] = ReadImageJROI(MaskName);
@@ -57,6 +62,7 @@ for counter = 1:length(imagej_zips)
            mask_org = mask;
            D = bwdist(~mask);
            mask = double(mask)*n_num;
+           mask_overlap_modify = max(mask, mask_overlap_modify);
            mask_overlap = mask + mask_overlap;
            D_overlap = max(D ,D_overlap);
            %% for border remove
@@ -79,18 +85,21 @@ for counter = 1:length(imagej_zips)
     end
     delete tempfolder\*.roi
     %% for masks with diffent label for each object    
-    savepath_labelmask = strcat(results_path,'label masks','\', strcat(erase(raw_imgs(counter).name,'.png'),'.tif'));
+    savepath_labelmask = strcat(results_path,'label masks','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.tif'));
     imwrite(uint16(mask_overlap),savepath_labelmask);
     
+     %% for masks with diffent label for each object (overlaying areas assign to one object!)    
+    savepath_labelmask = strcat(results_path,'label masks modify','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.tif'));
+    imwrite(uint16(mask_overlap_modify),savepath_labelmask);
     %% for binary mask
     mask_binary = zeros(512,512);
     mask_binary (mask_overlap>0)= 255;
     mask_binary = uint8(mask_binary);
-    savepath_binary = strcat(results_path,'mask binary','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
+    savepath_binary = strcat(results_path,'mask binary','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     imwrite(mask_binary,savepath_binary);
     
     %% for mask removing borders like TMI paper
-    savepath_binary_borderremoved = strcat(results_path,'mask binary without border','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
+    savepath_binary_borderremoved = strcat(results_path,'mask binary without border','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     mask_overlap_borderremove (mask_overlap_borderremove>0)= 255;
     imwrite(uint8(mask_overlap_borderremove),savepath_binary_borderremoved);
     
@@ -104,8 +113,8 @@ for counter = 1:length(imagej_zips)
     weight = weight* 255/max(weight(:));
     weight_erode = weight_erode* 255/max(weight_erode(:));
     
-    weighted_maps_path = strcat(results_path,'weighted_maps','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
-    weighted_maps_erode_path = strcat(results_path,'weighted_maps_erode','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
+    weighted_maps_path = strcat(results_path,'weighted_maps','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
+    weighted_maps_erode_path = strcat(results_path,'weighted_maps_erode','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     imwrite(uint8(weight),weighted_maps_path,'Mode','lossless');
     imwrite(uint8(weight_erode),weighted_maps_erode_path,'Mode','lossless');
     
@@ -118,11 +127,11 @@ for counter = 1:length(imagej_zips)
     %% for mask binary without border erode
     se = strel('disk', 1);
     mask_binary_without_border_erode = imerode(mask_overlap_borderremove,strel(se));
-    savepath_binary_borderremoved = strcat(results_path,'mask binary without border erode','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
+    savepath_binary_borderremoved = strcat(results_path,'mask binary without border erode','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     imwrite(uint8(mask_binary_without_border_erode),savepath_binary_borderremoved);
     
     %% for distance maps
-    savepath_distance = strcat(results_path,'distance maps','\', strcat(erase(raw_imgs(counter).name,'.png'),'.png'));
+    savepath_distance = strcat(results_path,'distance maps','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     D_overlap = double(D_overlap);
     D_overlap = D_overlap/max(D_overlap(:)); % otherwise you get bianry image for distance map
     imwrite(D_overlap,savepath_distance,'Mode','lossless');
@@ -159,11 +168,21 @@ for counter = 1:length(imagej_zips)
     saveas(fig, save_path_overlay);
     
     mask_overlap = zeros(size_target,size_target);
+    mask_overlap_modify = zeros(size_target,size_target);
     mask_overlap_borderremove = zeros(size_target,size_target);
-    D_overlap = zeros(size_target,size_target);
-    counter
+    D_overlap = zeros(512,512);
+    %counter
+%     formatSpec = 'number of  %4.2f meters or %8.3f mm\n';
+%     fprintf(formatSpec,A1,A2)
+    raw_imgs(counter).name 
+    object_count(counter)
+
+    fprintf('==========\n')
+    %raw_imgs(counter).name
     close all
 end
 
+%fprintf(object_count, erase(raw_imgs(counter).name,'.tif'))
+sum(object_count(:))
 end
 

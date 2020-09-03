@@ -1,5 +1,5 @@
 %% U-Net Weight Map implementation
-% Fidel A. Guerrero Pena
+% written by Fidel A. Guerrero Pena
 
 
 function [weight]=unetwmap(gt,w0,sigma)
