@@ -83,6 +83,15 @@ addObject(annotation)
 - then use Extension --> ImageJ --> send region to ImageJ (downsample factor = 1)
 - The image will appear on ImageJ software and then you could perform manual segmentation (see next session)
 ## Manual annotation with ImageJ
+We used ImageJ software to perform manual nuclei instance segmentation. We followed these steps to manually annotate the images:
+- open an image with the software
+- From tabs:  Analyse --> Tools --> ROI manager. Make sure that both "show all" and "labels" are activated in the ROI manager. 
+- Zoom in/out to have a clear view of the image and all instances
+- from the selection options, select "freehand selection"
+- manually annotate the border for each object and press "T". To remove an object select the labeled number inside the object and then press "Delete"
+- to remove an ROI 
+- When you are done with all nuclei, save the outputs with ROI manager--> More --> Save
+- A zip file containing a number of ROI files will be created after saving the outputs (each ROI file represent one of the nucleus) 
 
 ## Acknowledgements
 This work was supported by the Austrian Research Promotion Agency (FFG), No. 872636 and the Kaggle open data research grant.
