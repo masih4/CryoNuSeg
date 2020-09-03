@@ -1,7 +1,7 @@
 # CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images
 [![Generic badge](https://img.shields.io/badge/Code-MATLAB-<COLOR>.svg)](https://shields.io/)
 
-CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histological images. The dataset includes 30 image patches with a fix size of 512x512 pixels of 10 human organs. <a href="https://portal.gdc.cancer.gov/">The Cancer Genome Atlas (TCGA)</a> was the main source for creating this dataset.  
+CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histological images. The dataset includes 30 image patches with a fixed size of 512x512 pixels of 10 human organs. <a href="https://portal.gdc.cancer.gov/">The Cancer Genome Atlas (TCGA)</a> was the main source for creating this dataset.  
 
 ![Project Image](https://github.com/masih4/CryoNuSeg/blob/master/.gitfiles/example.jpg)
 
@@ -23,7 +23,7 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 
 ## Citation
-The full decription of the dataset can be found in the following article
+The full description of the dataset can be found in the following article:
 
 BibTex entry:
 ```
@@ -39,7 +39,7 @@ BibTex entry:
 ```
 
 ## Link to full dataset
-The Full dataset with corrosping generated segemntation masks can be found on Kaggle websit: 
+The full dataset with the corresponding generated segmentation masks are available on the Kaggle website: 
 https://www.kaggle.com/ipateam/segmentation-of-nuclei-in-cryosectioned-he-images
 
 ## WSI patch extraction
