@@ -1,10 +1,6 @@
-# nuclei-segmentation-dataset-of-cryosectioned-samples
+# CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images
 [![Generic badge](https://img.shields.io/badge/Code-MATLAB-<COLOR>.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Code-Python-<COLOR>.svg)](https://shields.io/)
 
+CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histological images. The dataset includes 30 image patches with a fix size of 512x512 pixels of 10 human organs. <a href="https://portal.gdc.cancer.gov/">The Cancer Genome Atlas (TCGA)</a> was the main source for creating this dataset.  
 
-Contributors: Amirreza Mahbod, Benjamin Bancher, Isabella Ellinger\
-Contact: amirreza.mahbod@gmail.com 
-
-This repository includes the codes and descriptions to create the fully annotated dataset of nuclei from cryosectioned histological samples (work in progress). The raw image patches were extracted from <a href="https://portal.gdc.cancer.gov/">the cancer genome atlas (TCGA)</a> data base.
 ![Project Image](https://github.com/masih4/nuclei-segmentation-dataset-of-cryosectioned-samples/blob/master/.gitfiles/example.png)
