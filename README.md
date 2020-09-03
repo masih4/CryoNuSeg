@@ -3,4 +3,4 @@
 
 CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histological images. The dataset includes 30 image patches with a fix size of 512x512 pixels of 10 human organs. <a href="https://portal.gdc.cancer.gov/">The Cancer Genome Atlas (TCGA)</a> was the main source for creating this dataset.  
 
-![Project Image](https://github.com/masih4/nuclei-segmentation-dataset-of-cryosectioned-samples/blob/master/.gitfiles/example.png)
+![Project Image](https://github.com/masih4/CryoNuSeg/blob/master/.gitfiles/example.jpg)
