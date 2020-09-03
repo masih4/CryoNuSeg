@@ -27,11 +27,11 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 
 ## Citation
-The full description of the dataset can be found in the following article:
+A paper describing our dataset is submitted to the International Symposium on Biomedical Imaging and currently, it is under review. The following BibTex entry will be updated soon.
 
 BibTex entry:
 ```
-@inproceedings{Manhbod_isbi_2021,
+@inproceedings{isbi_2021,
   title="CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images",
   author="Mahbod, A and Schaefer, G and Bancher, B and L\"{o}, C and Dorffner, G and Ecker, R and Ellinger, R",
   booktitle="International Symposium on Biomedical Imaging",
