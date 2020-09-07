@@ -96,7 +96,8 @@ We used ImageJ software to perform manual nuclei instance segmentation. We follo
 - A zip file containing a number of ROI files will be created after saving the outputs (each ROI file represent one of the nucleus) 
 
 ## Codes to generate segmentation masks
-The Matlab codes to generate the segmentation masks are available in the codes folder. Besides the conventional binary masks, we also created some auxiliary segmentation masks that may be helpful in developing supervised machine learning-based algorithms.  
+The Matlab codes to generate the segmentation masks are available in the  <a href="https://github.com/masih4/CryoNuSeg/tree/master/codes/manual_masks_generator
+">codes folder</a>. Besides the conventional binary masks, we also created some auxiliary segmentation masks that may be helpful in developing supervised machine learning-based algorithms.  
 
 ## Acknowledgements
 This work was supported by the Austrian Research Promotion Agency (FFG),<a href="https://projekte.ffg.at/projekt/3258628"> No. 872636</a> and the <a href="https://www.kaggle.com/open-data-research-grant-2020-awardees">Kaggle open data research grant</a>.
