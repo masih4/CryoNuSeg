@@ -27,7 +27,7 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 
 ## Citation
-A paper describing our dataset is submitted to the International Symposium on Biomedical Imaging and currently, it is under review. The following BibTex entry will be updated soon.
+A paper describing our dataset is under preparation and will be submitted to the International Symposium on Biomedical Imaging 2021. The following BibTex entry will be updated soon.
 
 BibTex entry:
 ```
