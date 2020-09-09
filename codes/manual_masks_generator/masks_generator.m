@@ -50,6 +50,7 @@ mkdir(strcat(results_path,'label masks modify'));
 
 
 % main loop
+object_count = zeros(1,length(imagej_zips));
 for counter = 1:length(imagej_zips)
     s = strcat(imagej_zips(counter).folder,'\',imagej_zips(counter).name);
     unzip(s, 'tempfolder');
