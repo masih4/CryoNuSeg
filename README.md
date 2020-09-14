@@ -33,7 +33,7 @@ BibTex entry:
 ```
 @inproceedings{isbi_2021,
   title="CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images",
-  author="Mahbod, A and Schaefer, G and Bancher, B and L\"{o}, C and Dorffner, G and Ecker, R and Ellinger, R",
+  author="Mahbod, A and Schaefer, G and Bancher, B and L\"{o}w, C and Dorffner, G and Ecker, R and Ellinger, I",
   booktitle="International Symposium on Biomedical Imaging",
   pages="",
   year="2021",
