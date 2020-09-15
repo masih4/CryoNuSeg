@@ -47,6 +47,7 @@ mkdir(strcat(results_path,'weighted_maps'));
 mkdir(strcat(results_path,'weighted_maps_erode'));
 mkdir(strcat(results_path,'overlay_save_path'));
 mkdir(strcat(results_path,'label masks modify'));
+mkdir(strcat(results_path,'stacked mask'));
 
 
 % main loop
@@ -55,11 +56,13 @@ for counter = 1:length(imagej_zips)
     s = strcat(imagej_zips(counter).folder,'\',imagej_zips(counter).name);
     unzip(s, 'tempfolder');
     ROIs = dir('.\tempfolder\*.roi');
+    stacked_mask = zeros(size_target, size_target, length(ROIs));
     object_count(counter) = length(ROIs);
     for n_num=1:length(ROIs)
            MaskName = strcat('.\tempfolder\',ROIs(n_num).name); 
            [sROI] = ReadImageJROI(MaskName);
            mask = poly2mask(sROI.mnCoordinates(:,1),sROI.mnCoordinates(:,2), 512, 512);
+           stacked_mask(:,:,n_num)= mask;
            mask_org = mask;
            D = bwdist(~mask);
            mask = double(mask)*n_num;
@@ -85,6 +88,9 @@ for counter = 1:length(imagej_zips)
            
     end
     delete tempfolder\*.roi
+    %% for stacked mask (optional)
+    savepath_mask_stack = strcat(results_path,'stacked mask','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.mat'));
+    save(savepath_mask_stack,'stacked_mask')
     %% for masks with diffent label for each object    
     savepath_labelmask = strcat(results_path,'label masks','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.tif'));
     imwrite(uint16(mask_overlap),savepath_labelmask);
