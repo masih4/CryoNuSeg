@@ -27,17 +27,18 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 
 ## Citation
-A paper describing our dataset is under preparation and will be submitted to the Computers in Biology and Medicine journal. The following BibTex entry will be updated soon.
+A preprint describing our dataset is available on arXiv:
+https://arxiv.org/abs/2101.00442
 
 BibTex entry:
 ```
-@article{mahbod2020,
-  title="CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images",
-  author="Mahbod, A and Schaefer, G and Bancher, B and L\"{o}w, C and Dorffner, G and Ecker, R and Ellinger, I",
-  journal="Computers in Biology and Medicine",
-  pages="",
-  year="2020"
+@article{CryoNuSeg2021,
+title = "CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images",
+author = "Mahbod, A and Schaefer, G and Bancher, B and L\"{o}w, C and Dorffner, G and Ecker, R and Ellinger, I",
+journal = "arXiv preprint arXiv:2101.00442",
+year = "2021"
 }
+
 ```
 ## Link to full dataset
 The full dataset with the corresponding generated segmentation masks are available on the Kaggle website: 
