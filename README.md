@@ -33,10 +33,15 @@ https://arxiv.org/abs/2101.00442
 BibTex entry:
 ```
 @article{CryoNuSeg2021,
-title = "CryoNuSeg: A Dataset for Nuclei Segmentation of Cryosectioned H\&E-Stained Histological Images",
-author = "Mahbod, A and Schaefer, G and Bancher, B and L\"{o}w, C and Dorffner, G and Ecker, R and Ellinger, I",
-journal = "arXiv preprint arXiv:2101.00442",
-year = "2021"
+title = "{CryoNuSeg}: A dataset for nuclei instance segmentation of cryosectioned H\&E-stained histological images",
+journal = "Computers in Biology and Medicine",
+volume = "132",
+pages = "104349",
+year = "2021",
+issn = "0010-4825",
+doi = "https://doi.org/10.1016/j.compbiomed.2021.104349",
+url = "https://www.sciencedirect.com/science/article/pii/S0010482521001438",
+author = "Amirreza Mahbod and Gerald Schaefer and Benjamin Bancher and Christine L\"{o}w and Georg Dorffner and Rupert Ecker and Isabella Ellinger"
 }
 
 ```
