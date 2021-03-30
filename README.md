@@ -27,8 +27,8 @@ CryoNuSeg is the first fully annotated dataset of frozen H\&E-Stained histologic
 
 
 ## Citation
-A preprint describing our dataset is available on arXiv:
-https://arxiv.org/abs/2101.00442
+Our published paper is publicy available on ScienceDirect (open access):
+https://www.sciencedirect.com/science/article/pii/S0010482521001438
 
 BibTex entry:
 ```
@@ -43,7 +43,6 @@ doi = "https://doi.org/10.1016/j.compbiomed.2021.104349",
 url = "https://www.sciencedirect.com/science/article/pii/S0010482521001438",
 author = "Amirreza Mahbod and Gerald Schaefer and Benjamin Bancher and Christine L\"{o}w and Georg Dorffner and Rupert Ecker and Isabella Ellinger"
 }
-
 ```
 ## Link to full dataset
 The full dataset with the corresponding generated segmentation masks are available on the Kaggle website: 
