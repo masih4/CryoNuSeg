@@ -4,9 +4,13 @@ clear all
 close all
 
 size_target = 512;
-imagej_zips_path = '..\imageJ_zips\';
-raw_imgs_path = '..\images\';
-results_path = '..\results\';
+% imagej_zips_path = '..\imageJ_zips\';
+% raw_imgs_path = '..\images\';
+% results_path = '..\results\';
+
+imagej_zips_path = 'C:\Masih\research\PhD\projects\intraoperative histology samples\data\Christine_final\Imagj_zips\';
+raw_imgs_path = 'C:\Masih\research\PhD\projects\intraoperative histology samples\data\tissue images\';
+results_path = 'C:\Users\amahbod\Desktop\manual_masks_generator\res\';
 
 
 masks_generator(size_target, imagej_zips_path, raw_imgs_path, results_path)

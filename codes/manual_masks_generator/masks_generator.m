@@ -15,7 +15,7 @@ function  masks_generator(size_target,imagej_zips_path,raw_imgs_path, results_pa
 %     - lable mask
 %     - overlaid images (just for visualization)
 %% file structure
-% main dir --------- raw images folder (contain  'count' image patches)
+% main dir --------- raw images folder (contains  'count' image patches)
 %          --------- imageJ zip files  (contains 'count' zip files and each zip file contains 'n_num' roi files)
 %          --------- masks                            (this directory will be created while running the code)
 %          --------- mask binary                      (this directory will be created while running the code)
@@ -25,7 +25,7 @@ function  masks_generator(size_target,imagej_zips_path,raw_imgs_path, results_pa
 %          --------- weighted_maps                    (this directory will be created while running the code)
 %          --------- weighted_maps_erode              (this directory will be created while running the code)
 %          --------- overlay_save_path                (this directory will be created while running the code)
-         
+%          --------- nuclie border                    (this directory will be created while running the code)     
 
 
 mask_overlap = zeros(size_target,size_target);
@@ -48,6 +48,7 @@ mkdir(strcat(results_path,'weighted_maps_erode'));
 mkdir(strcat(results_path,'overlay_save_path'));
 mkdir(strcat(results_path,'label masks modify'));
 mkdir(strcat(results_path,'stacked mask'));
+mkdir(strcat(results_path,'nuclei border'));
 
 
 % main loop
@@ -104,7 +105,14 @@ for counter = 1:length(imagej_zips)
     mask_binary = uint8(mask_binary);
     savepath_binary = strcat(results_path,'mask binary','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     imwrite(mask_binary,savepath_binary);
-    
+
+    %% for nuclie border
+    se = strel('disk', 3);
+    eroded_mask_binary = imerode(mask_binary,strel(se));
+    border = mask_binary - eroded_mask_binary; 
+    savepath_border = strcat(results_path,'nuclei border','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
+    imwrite(border, savepath_border);
+
     %% for mask removing borders like TMI paper
     savepath_binary_borderremoved = strcat(results_path,'mask binary without border','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
     mask_overlap_borderremove (mask_overlap_borderremove>0)= 255;
