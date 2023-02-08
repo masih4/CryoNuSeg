@@ -48,7 +48,16 @@ mkdir(strcat(results_path,'weighted_maps_erode'));
 mkdir(strcat(results_path,'overlay_save_path'));
 mkdir(strcat(results_path,'label masks modify'));
 mkdir(strcat(results_path,'stacked mask'));
-mkdir(strcat(results_path,'nuclei border'));
+mkdir(strcat(results_path,'nuclei border\disk1'));
+mkdir(strcat(results_path,'nuclei border\disk2'));
+mkdir(strcat(results_path,'nuclei border\disk3'));
+mkdir(strcat(results_path,'nuclei border\disk4'));
+mkdir(strcat(results_path,'nuclei border\disk5'));
+mkdir(strcat(results_path,'nuclei border\disk6'));
+mkdir(strcat(results_path,'nuclei border\disk7'));
+mkdir(strcat(results_path,'nuclei border\disk8'));
+mkdir(strcat(results_path,'nuclei border\disk9'));
+mkdir(strcat(results_path,'nuclei border\disk10'));
 
 
 % main loop
@@ -107,11 +116,13 @@ for counter = 1:length(imagej_zips)
     imwrite(mask_binary,savepath_binary);
 
     %% for nuclie border
-    se = strel('disk', 3);
-    eroded_mask_binary = imerode(mask_binary,strel(se));
-    border = mask_binary - eroded_mask_binary; 
-    savepath_border = strcat(results_path,'nuclei border','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
-    imwrite(border, savepath_border);
+    for diskthick =1:10
+        se = strel('disk', diskthick);
+        eroded_mask_binary = imerode(mask_binary,strel(se));
+        border = mask_binary - eroded_mask_binary; 
+        savepath_border = strcat(results_path,'nuclei border\disk',string(diskthick),'\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
+        imwrite(border, savepath_border);
+    end
 
     %% for mask removing borders like TMI paper
     savepath_binary_borderremoved = strcat(results_path,'mask binary without border','\', strcat(erase(raw_imgs(counter).name,'.tif'),'.png'));
