@@ -10,7 +10,7 @@ size_target = 512;
 
 imagej_zips_path = 'C:\Masih\research\PhD\projects\intraoperative histology samples\data\Christine_final\Imagj_zips\';
 raw_imgs_path = 'C:\Masih\research\PhD\projects\intraoperative histology samples\data\tissue images\';
-results_path = 'C:\Users\amahbod\Desktop\manual_masks_generator\res\';
+results_path = 'C:\Masih\research\PhD\projects\intraoperative histology samples\data\Christine_final_with_nuclei_border\';
 
 
 masks_generator(size_target, imagej_zips_path, raw_imgs_path, results_path)
